@@ -1,4 +1,4 @@
-# 🔌 API — Sistema de Chamados Internos (C#)
+# API — Sistema de Chamados Internos (C#)
 
 Esta é a **API REST desenvolvida em ASP.NET Core**, responsável por gerenciar toda a estrutura do sistema de chamados internos. Ela fornece os endpoints utilizados pelo front-end para autenticação, criação de chamados, listagem, respostas e administração de usuários.
 
