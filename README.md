@@ -1,63 +1,74 @@
-Esta API foi desenvolvida em C# / .NET Web API com o objetivo de oferecer os serviços necessários para um sistema de chamados, incluindo autenticação, gerenciamento de usuários e criação de tickets.
+# 🔌 API — Sistema de Chamados Internos (C#)
 
-🌐 Funcionalidades Principais
+Esta é a **API REST desenvolvida em ASP.NET Core**, responsável por gerenciar toda a estrutura do sistema de chamados internos. Ela fornece os endpoints utilizados pelo front-end para autenticação, criação de chamados, listagem, respostas e administração de usuários.
 
-A API fornece recursos para:
+---
 
-Autenticação de usuários via login
+## 🚀 Tecnologias Utilizadas
 
-Geração de token JWT
+- **ASP.NET Core Web API**
+- **C#**
+- **Entity Framework Core**
+- **JWT Authentication**
+- **Injeção de Dependência (DI)**
 
-Cadastro de usuários
+---
 
-Listagem de usuários
+## ⚙️ Funcionalidades da API
 
-Criação de tickets
+| Recurso | Descrição |
+|--------|-----------|
+| **Autenticação (JWT)** | Login retorna um token JWT utilizado em todas as requisições protegidas. |
+| **Gerenciamento de Usuários** | Cadastro, listagem e controle de permissão (Usuário / Admin). |
+| **Criação de Chamados** | Endpoint para registrar um novo chamado com título, descrição e categoria. |
+| **Listagem de Chamados** | Retorna chamados do usuário logado. |
+| **Resposta a Chamados** | Permite inserir mensagens dentro de um chamado existente. |
 
-Listagem de tickets
+---
 
-Toda a comunicação segue o padrão REST.
+## 📡 Estrutura de Endpoints (Resumo)
 
-📂 Estrutura Geral
+> **Abaixo estão listados apenas alguns dos principais endpoints da API.  
+A API completa possui mais rotas além dessas.**
+### 🔑 Autenticação
+- `POST /auth/login` — Realiza login e gera token JWT.
 
-A solução segue uma organização simples:
+### 👤 Usuários
+- `POST /users` — Cria usuário (Admin).  
+- `GET /users` — Lista usuários.
 
-Controllers → Endpoints da API  
-Services    → Regras de negócio  
-Models      → Estruturas de dados
-Repositories → Acesso aos dados  
+### 🎫 Chamados
+- `POST /tickets` — Cria um novo chamado.  
+- `GET /tickets` — Lista chamados.  
+- `GET /tickets/{id}` — Detalhes do chamado.  
 
-🔐 Autenticação
+---
 
-A API utiliza JWT.
-Para acessar rotas protegidas, o cliente deve enviar:
+## 🧱 Estrutura Geral do Projeto
 
-Authorization: Bearer <token>
+```
+/Controllers
+/Models
+/DTOs
+/Services
+/Repositories
+/Configurations   (JWT, Swagger, CORS)
+```
 
+---
 
-O token é obtido no endpoint de login.
+## ▶️ Como Executar
 
-🔗 Endpoints
-Autenticação
+1. Instale o .NET SDK  
+2. Restaure dependências:  
+   `dotnet restore`
+3. Rode o projeto:  
+   `dotnet run`
+4. Acesse a documentação Swagger:  
+   `http://localhost:5000/swagger`
 
-POST /api/auth/login → Retorna token JWT
+---
 
-Usuários
+## ✔️ Conclusão
 
-POST /api/users → Cria usuário
-
-GET /api/users → Lista usuários
-
-Tickets
-
-POST /api/tickets → Cria ticket
-
-GET /api/tickets → Lista tickets
-
-▶️ Execução
-
-Configurar o appsettings.json
-
-Executar o projeto:
-
-dotnet run
+A API foi desenvolvida de forma simples e organizada, aplicando boas práticas como POO, camadas separadas (Controller / Service / Repository), autenticação JWT e uso de DTOs para padronizar a comunicação com o front-end.
